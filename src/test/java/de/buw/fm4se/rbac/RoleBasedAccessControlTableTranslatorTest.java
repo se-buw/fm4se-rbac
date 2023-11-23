@@ -13,7 +13,8 @@ class RoleBasedAccessControlTableTranslatorTest {
   void testTranslateToFormula1Sat() throws IOException, InterruptedException {
     RbacTableReader rbac = new RbacTableReader("rbac1.csv");
     String formula = RoleBasedAccessControlTableTranslator.translateToFormula(rbac);
-    assertTrue(LimbooleExecutor.runLimboole(formula, false).contains("Admin"));
+    assertTrue(LimbooleExecutor.runLimboole(formula, false).contains("Admin"),
+        "Admin is in the rbac1.csv file but not in the model.");
   }
 
   @Test
@@ -22,10 +23,11 @@ class RoleBasedAccessControlTableTranslatorTest {
     String formula = RoleBasedAccessControlTableTranslator.translateToFormula(rbac);
     String model = LimbooleExecutor.runLimboole(formula, false);
     for (String permission : rbac.getPermissions()) {
-      assertTrue(model.contains(permission));
+      assertTrue(model.contains(permission),
+          "Permission " + permission + " is in the rbac1.csv file but not in the model.");
     }
     for (String role : rbac.getRoles()) {
-      assertTrue(model.contains(role));
+      assertTrue(model.contains(role), "Role " + role + " is in the rbac1.csv file but not in the model.");
     }
   }
 
@@ -33,7 +35,8 @@ class RoleBasedAccessControlTableTranslatorTest {
   void testTranslateToFormula2Sat() throws IOException, InterruptedException {
     RbacTableReader rbac = new RbacTableReader("rbac2.csv");
     String formula = RoleBasedAccessControlTableTranslator.translateToFormula(rbac);
-    assertTrue(LimbooleExecutor.runLimboole(formula, false).contains("Student"));
+    assertTrue(LimbooleExecutor.runLimboole(formula, false).contains("Student"),
+        "Student is in the rbac2.csv file but not in the model.");
   }
 
   @Test
@@ -42,10 +45,11 @@ class RoleBasedAccessControlTableTranslatorTest {
     String formula = RoleBasedAccessControlTableTranslator.translateToFormula(rbac);
     String model = LimbooleExecutor.runLimboole(formula, false);
     for (String permission : rbac.getPermissions()) {
-      assertTrue(model.contains(permission));
+      assertTrue(model.contains(permission),
+          "Permission " + permission + " is in the rbac2.csv file but not in the model.");
     }
     for (String role : rbac.getRoles()) {
-      assertTrue(model.contains(role));
+      assertTrue(model.contains(role), "Role " + role + " is in the rbac2.csv file but not in the model.");
     }
   }
 

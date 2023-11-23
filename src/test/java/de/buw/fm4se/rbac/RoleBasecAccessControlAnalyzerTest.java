@@ -11,7 +11,7 @@ class RoleBasecAccessControlAnalyzerTest {
 
   /**
    * Every user with role HR or Support must be able to access the KnowledgeBase.
-
+   * 
    */
   @Test
   void testEveryUserWithRoleHasPermissions() {
@@ -21,7 +21,8 @@ class RoleBasecAccessControlAnalyzerTest {
     roles.add("HR");
     Set<String> permissions = new HashSet<>();
     permissions.add("KnowledgeBase");
-    assertTrue(analyzer.everyUserWithRoleHasPermissions(roles, permissions));
+    assertTrue(analyzer.everyUserWithRoleHasPermissions(roles, permissions),
+        "Every user with role HR or Support must be able to access the KnowledgeBase.");
   }
 
   /**
@@ -30,7 +31,8 @@ class RoleBasecAccessControlAnalyzerTest {
   @Test
   void testOnlyUsersWithRoleHavePermissions() {
     RoleBasecAccessControlAnalyzer analyzer = new RoleBasecAccessControlAnalyzer("rbac1.csv");
-    assertTrue(analyzer.onlyUserWithRoleHasPermission("Admin", "Firewall"));
+    assertTrue(analyzer.onlyUserWithRoleHasPermission("Admin", "Firewall"),
+        "Only users with role Admin may access the Firewall.");
   }
 
   /**
@@ -39,9 +41,9 @@ class RoleBasecAccessControlAnalyzerTest {
   @Test
   void testNoUserHasBothPermissions() {
     RoleBasecAccessControlAnalyzer analyzer = new RoleBasecAccessControlAnalyzer("rbac1.csv");
-    assertFalse(analyzer.noUserHasBothPermissions("Firewall", "Accounting"));
+    assertFalse(analyzer.noUserHasBothPermissions("Firewall", "Accounting"),
+        "No user may access the firewall and the accounting at the same time.");
   }
-
 
   /**
    * No user may access the course and the marks at the same time.
@@ -49,20 +51,23 @@ class RoleBasecAccessControlAnalyzerTest {
   @Test
   void testNoUserHasBothPermissions2() {
     RoleBasecAccessControlAnalyzer analyzer = new RoleBasecAccessControlAnalyzer("rbac2.csv");
-    assertTrue(analyzer.noUserHasBothPermissions("Course", "Marks"));
+    assertTrue(analyzer.noUserHasBothPermissions("Course", "Marks"),
+        "No user may access the course and the marks at the same time.");
   }
 
   /**
    * Only users with role Teacher may access the assignment.
-   */   
+   */
   @Test
   void testOnlyUsersWithRoleHavePermissions2() {
     RoleBasecAccessControlAnalyzer analyzer = new RoleBasecAccessControlAnalyzer("rbac2.csv");
-    assertFalse(analyzer.onlyUserWithRoleHasPermission("Teacher", "Assignment"));
+    assertFalse(analyzer.onlyUserWithRoleHasPermission("Teacher", "Assignment"),
+        "Only users with role Teacher may access the assignment.");
   }
 
   /**
-   * Every user with role Student or Admin must be able to access the course and the server.
+   * Every user with role Student or Admin must be able to access the course and
+   * the server.
    */
   @Test
   void testEveryUserWithRoleHasPermissions2() {
@@ -73,6 +78,7 @@ class RoleBasecAccessControlAnalyzerTest {
     Set<String> permissions = new HashSet<>();
     permissions.add("Course");
     permissions.add("Server");
-    assertFalse(analyzer.everyUserWithRoleHasPermissions(roles, permissions));
+    assertFalse(analyzer.everyUserWithRoleHasPermissions(roles, permissions),
+        "Every user with role Student or Admin must be able to access the course and the server.");
   }
 }
