@@ -1,9 +1,19 @@
 {
   "tests": [
     {
+      "name": "Task 0: RbacTableReaderTest",
+      "setup": "chmod +x gradlew",
+      "run": "./gradlew test --tests 'T1RbacTableReaderTest' --console=rich",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 5,
+      "points": 1
+    },
+    {
       "name": "Task 1: Role-Basec Access Control Table Translator",
       "setup": "chmod +x gradlew",
-      "run": "./gradlew test --tests 'RoleBasedAccessControlTableTranslatorTest' --console=rich",
+      "run": "./gradlew test --tests 'T2RoleBasedAccessControlTableTranslatorTest' --console=rich",
       "input": "",
       "output": "",
       "comparison": "included",
@@ -13,7 +23,7 @@
     {
       "name": "Task 2: Role-Basec Access Control Analyzer",
       "setup": "chmod +x gradlew",
-      "run": "./gradlew test --tests 'RoleBasecAccessControlAnalyzerTest' --console=rich",
+      "run": "./gradlew test --tests 'T3RoleBasecAccessControlAnalyzerTest' --console=rich",
       "input": "",
       "output": "",
       "comparison": "included",
