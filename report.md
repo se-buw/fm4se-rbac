@@ -27,13 +27,13 @@
 | No User Has Both Permissions2 | ❌ Failed | ⚠️ RuntimeException |
 | Only Users With Role Have Permissions2 | ❌ Failed | ⚠️ RuntimeException |
 | Every User With Role Has Permissions2 | ❌ Failed | ⚠️ RuntimeException |
-## Additional
-
-| Test | Status | Reason |
-| --- | --- | --- |
-| Additional | ✅ Passed | - |
 ## Limboole Executor
 
 | Test | Status | Reason |
 | --- | --- | --- |
 | Limboole Working | ✅ Passed | - |
+## Additional
+
+| Test | Status | Reason |
+| --- | --- | --- |
+| Additional | ✅ Passed | - |
